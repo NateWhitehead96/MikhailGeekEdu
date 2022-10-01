@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pipe : MonoBehaviour
 {
-    public int speed;
+    public int speed; // how fast the pipe moves
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,9 @@ public class Pipe : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime); // slide the pipe to the left
-        //transform.position = new Vector3(transform.position.x - speed * Time.time, transform.position.y); // move the thing to the left
+        if(transform.position.x < -12) // when it goes off screen
+        {
+            Destroy(gameObject); // destroy the pipes
+        }
     }
 }
